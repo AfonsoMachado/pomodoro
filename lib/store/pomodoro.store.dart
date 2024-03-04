@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:mobx/mobx.dart';
 
 part 'pomodoro.store.g.dart';
@@ -23,21 +25,35 @@ abstract class _PomodoroStore with Store {
   int restTime = 1;
 
   @observable
-  IntervalType intervalType = IntervalType.rest;
+  IntervalType intervalType = IntervalType.work;
+
+  Timer? timer;
 
   @action
   void start() {
     started = true;
+    // Executa de forma periódica a cada 1 segundo
+    timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
+      if (minutes == 0 && seconds == 0) {
+        _changeIntervalType();
+      } else if (seconds == 0) {
+        seconds = 59;
+        minutes--;
+      } else {
+        seconds--;
+      }
+    });
   }
 
   @action
   void stop() {
     started = false;
+    timer?.cancel();
   }
 
   @action
   void restart() {
-    started = false;
+    stop();
   }
 
   @action
@@ -66,5 +82,16 @@ abstract class _PomodoroStore with Store {
 
   bool isResting() {
     return intervalType == IntervalType.rest;
+  }
+
+  void _changeIntervalType() {
+    if (isWorking()) {
+      intervalType = IntervalType.rest;
+      minutes = restTime;
+    } else {
+      intervalType = IntervalType.work;
+      minutes = workTime;
+    }
+    seconds = 0;
   }
 }
