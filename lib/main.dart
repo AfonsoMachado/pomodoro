@@ -14,9 +14,17 @@ class MyApp extends StatelessWidget {
       title: 'Pomodoro',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            shape: MaterialStatePropertyAll(
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+            backgroundColor: const MaterialStatePropertyAll(Colors.blue),
+          ),
+        ),
         useMaterial3: true,
       ),
       home: const Pomodoro(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
