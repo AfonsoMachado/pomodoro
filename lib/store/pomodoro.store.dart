@@ -33,7 +33,7 @@ abstract class _PomodoroStore with Store {
   void start() {
     started = true;
     // Executa de forma periódica a cada 1 segundo
-    timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (minutes == 0 && seconds == 0) {
         _changeIntervalType();
       } else if (seconds == 0) {
@@ -54,26 +54,32 @@ abstract class _PomodoroStore with Store {
   @action
   void restart() {
     stop();
+    minutes = isWorking() ? workTime : restTime;
+    seconds = 0;
   }
 
   @action
   void incrementWorkTime() {
     workTime++;
+    if (isWorking()) restart();
   }
 
   @action
   void decrementWorkTime() {
-    workTime--;
+    if (workTime > 1) workTime--;
+    if (isWorking()) restart();
   }
 
   @action
   void incrementRestTime() {
     restTime++;
+    if (isResting()) restart();
   }
 
   @action
   void decrementRestTime() {
-    restTime--;
+    if (restTime > 1) restTime--;
+    if (isResting()) restart();
   }
 
   bool isWorking() {
