@@ -23,12 +23,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5))),
-                backgroundColor: const MaterialStatePropertyAll(Colors.blue),
-                iconColor: const MaterialStatePropertyAll(Colors.white),
-                foregroundColor: const MaterialStatePropertyAll(Colors.white)),
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5)),
+                foregroundColor: Colors.white),
           ),
           useMaterial3: true,
         ),
