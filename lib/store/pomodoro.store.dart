@@ -4,6 +4,8 @@ part 'pomodoro.store.g.dart';
 
 class PomodoroStore = _PomodoroStore with _$PomodoroStore;
 
+enum IntervalType { work, rest }
+
 abstract class _PomodoroStore with Store {
   @observable
   bool started = false;
@@ -19,6 +21,9 @@ abstract class _PomodoroStore with Store {
 
   @observable
   int restTime = 1;
+
+  @observable
+  IntervalType intervalType = IntervalType.rest;
 
   @action
   void start() {
@@ -53,5 +58,13 @@ abstract class _PomodoroStore with Store {
   @action
   void decrementRestTime() {
     restTime--;
+  }
+
+  bool isWorking() {
+    return intervalType == IntervalType.work;
+  }
+
+  bool isResting() {
+    return intervalType == IntervalType.rest;
   }
 }
