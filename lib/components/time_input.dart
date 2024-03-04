@@ -35,7 +35,6 @@ class TimeInput extends StatelessWidget {
                   backgroundColor: Colors.red),
               child: const Icon(
                 Icons.arrow_downward,
-                color: Colors.white,
               ),
             ),
             Text(
@@ -45,12 +44,12 @@ class TimeInput extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(15),
-                  backgroundColor: Colors.red),
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(15),
+                backgroundColor: Colors.red,
+              ),
               child: const Icon(
                 Icons.arrow_upward,
-                color: Colors.white,
               ),
             ),
           ],
