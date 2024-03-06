@@ -36,7 +36,8 @@ $ flutter run
 
 ## :white_check_mark: Resultado
 
-<img src="https://github.com/AfonsoMachado/flutter_calculator/assets/11397955/ec221381-96db-4bf0-840d-980b2218f31a" height="600" />
+<img src="https://github.com/AfonsoMachado/pomodoro/assets/11397955/5760ed38-7cb0-4fae-a03f-080737027e1d" height="600" />
+<img src="https://github.com/AfonsoMachado/pomodoro/assets/11397955/a8af79ac-53e0-4b08-861a-a01b03675d22" height="600" />
 
 ---
 
